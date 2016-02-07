@@ -1,0 +1,22 @@
+#!/bin/bash
+var0=$*
+folder="${var0// /\\ }"
+directory="MusicCollection/Music/"${folder}
+echo ${directory}
+var0=`mpc playlist | wc -l`
+LIMIT=10
+while true; do
+        var0=`mpc playlist | wc -l`
+        while [ "$var0" -lt "$LIMIT" ]
+        do
+                if [ -z "$1" ]
+                then
+                        mpc listall | sed -n $[RANDOM % $(mpc stats | grep Songs | awk '{print $2}')+1]p | mpc add
+                else
+                        eval mpc listall ${directory} | sed -n $[RANDOM % $(eval mpc listall ${directory} | wc -l)+1]p | mpc add
+                fi
+                var0=`mpc playlist | wc -l`
+        done
+        mpc current --wait
+done
+
