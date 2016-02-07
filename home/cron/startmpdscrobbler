@@ -1,0 +1,6 @@
+#!/bin/bash
+mpd --kill
+/etc/init.d/mpd restart
+mpdscribble
+mpc consum on
+exit 0
