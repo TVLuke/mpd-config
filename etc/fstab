@@ -1,1 +1,7 @@
 
+proc            /proc           proc    defaults          0       0
+/dev/mmcblk0p5  /boot           vfat    defaults          0       2
+/dev/mmcblk0p6  /               ext4    defaults,noatime  0       1
+# a swapfile is not a swap partition, so no using swapon|off from here on, use  dphys-swapfile swap[on|off]  for that
+//192.168.1.XXX/myMusic /home/tvluke/media/nasMusic cifs username=XXXXX,password=XXXXX,uid=100 0 0
+#//192.168.1.XXX/myMusic /media/nasMusic cifs username=XXXXX,password=XXXXXX,iocharset=utf8,file_mode=0777,dir_mode=0777,noperm 0 0
