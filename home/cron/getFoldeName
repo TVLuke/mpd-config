@@ -1,0 +1,6 @@
+#!/bin/bash
+
+var0=$1
+var0="${var0// /\\ }"
+echo ${var0}
+
